@@ -1,0 +1,78 @@
+import pandas as pd
+from nltk import word_tokenize
+from tqdm import tqdm
+from collections import Counter
+from textblob import TextBlob
+from nltk import FreqDist
+import re
+from gensim.models.wrappers import FastText
+
+tqdm.pandas()
+
+
+def read_data():
+    df = pd.read_csv("data/eng_heb_sentences.csv", encoding="utf8", names=["hebrew_sentences", "english_sentences"],
+                     header=0)
+    df["english_sentences"] = df["english_sentences"].apply(lambda x: x.lower())
+    return df
+
+
+def decontracted(phrase):
+    # specific
+    phrase = re.sub(r"won't", "will not", phrase)
+    phrase = re.sub(r"can\'t", "can not", phrase)
+
+    # general
+    phrase = re.sub(r"n\'t", " not", phrase)
+    phrase = re.sub(r"\'re", " are", phrase)
+    phrase = re.sub(r"\'s", " is", phrase)
+    phrase = re.sub(r"\'d", " would", phrase)
+    phrase = re.sub(r"\'ll", " will", phrase)
+    phrase = re.sub(r"\'t", " not", phrase)
+    phrase = re.sub(r"\'ve", " have", phrase)
+    phrase = re.sub(r"\'m", " am", phrase)
+    return phrase
+
+
+def get_vocab(series, addtional_tokens=[], top=None):
+    rev_vocab = addtional_tokens
+    freq_vocab = FreqDist()
+    for s in tqdm(series):
+        freq_vocab.update(word_tokenize(decontracted(s)))
+    print("Original vocab size %s" % len(freq_vocab))
+    all_words_sorted = sorted(freq_vocab, key=freq_vocab.get, reverse=True)
+    top_words = all_words_sorted[:top]
+    rev_vocab += top_words
+    vocab = {word: index for index, word in enumerate(rev_vocab)}
+    return vocab, rev_vocab
+
+
+def vectorize_sentences(sentences, vocab):
+    vectorized_sentences = []
+    for s in tqdm(sentences):
+        sentence = []
+        for word in word_tokenize(decontracted(s)):
+            if word in vocab:
+                sentence.append(word)
+            else:
+                sentence.append("<UNK>")
+        vectorized_sentences.append(sentence)
+    return vectorized_sentences
+
+
+# def clean_english_sentences(df):
+#     df["remove"] = df["english_sentences"].progress_apply(lambda x: TextBlob(x).detect_language() != "en")
+#     print(df[df["remove"] == True])
+#     filtered = df[df["remove"] == False]
+#     del filtered["remove"]
+#     return filtered
+
+
+if __name__ == '__main__':
+    df = read_data()
+    # df = clean_english_sentences(df)
+    eng_vocab, rev_eng_vocab = get_vocab(df["english_sentences"], addtional_tokens=["<UNK>"], top=15000)
+    heb_vocab, rev_heb_vocab = get_vocab(df["hebrew_sentences"], addtional_tokens=["<UNK>"], top=30000)
+    vect_eng_sentences = vectorize_sentences(df["english_sentences"], eng_vocab)
+    vect_heb_sentences = vectorize_sentences(df["hebrew_sentences"], heb_vocab)
+    pass
