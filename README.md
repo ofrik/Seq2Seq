@@ -2,6 +2,7 @@
 We will implement Seq2Seq algorithm in python like it was implemented in the paper "[Sequence ro Sequence Learning with Neural Networks](https://papers.nips.cc/paper/5346-sequence-to-sequence-learning-with-neural-networks.pdf)"
 instead of using english/french dataset we will use english/hebrew one from [tatoeba project](https://tatoeba.org/eng).
 We linked the english sentences with the different translations in hebrew into a single csv file that we will use as our dataset.
+I've found a reference for the implementation http://suriyadeepan.github.io/2016-12-31-practical-seq2seq/
 <!-- Using the tmx files from http://opus.nlpl.eu/ of english/hebrew without OpenSubtitles duplications. -->
 <!-- After quick data exploration we could see some of the translations are less than correct (probably data from OpenSubtitles that has alignment issue). -->
 <!-- In order to deal with that we used an external translation library TextBlob that has translation api that uses google translate. -->
