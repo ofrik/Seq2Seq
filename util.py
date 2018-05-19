@@ -6,6 +6,7 @@ from textblob import TextBlob
 from nltk import FreqDist
 import re
 from gensim.models.wrappers import FastText
+from nltk.translate.bleu_score import corpus_bleu
 
 tqdm.pandas()
 
@@ -58,6 +59,18 @@ def vectorize_sentences(sentences, vocab):
                 sentence.append("<UNK>")
         vectorized_sentences.append(sentence)
     return vectorized_sentences
+
+
+def calculate_BLEU_score(excepted_sentences, actual_sentences):
+    """
+    excepted_sentences = [[['this', 'is', 'a', 'test'], ['this', 'is' 'test']]]
+    actual_sentences = [['this', 'is', 'a', 'test']]
+    that means both expected sentences are good, we have cases where multiple translations are good.
+    :param excepted_sentences:
+    :param actual_sentences:
+    :return:
+    """
+    return corpus_bleu(excepted_sentences, actual_sentences)
 
 
 # def clean_english_sentences(df):
