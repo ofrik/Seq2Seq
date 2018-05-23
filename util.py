@@ -60,6 +60,20 @@ def vectorize_sentences(sentences, vocab):
         vectorized_sentences.append(sentence)
     return vectorized_sentences
 
+def indent_sentences(sentences):
+    decoder_input = []
+    decoder_output = []
+    
+    for sentence in tqdm(sentences):
+        sentence = ["<START>"] + sentence
+        for index in range(1,len(sentence)):
+            decoder_input.append(sentence[index-1:index])
+            decoder_output.append(sentence[index:index+1])
+        decoder_input.append(sentence[index:index+1])
+        decoder_output.append(["<EOS>"])
+    
+    return decoder_input , decoder_output
+
 
 def calculate_BLEU_score(excepted_sentences, actual_sentences):
     """
@@ -82,10 +96,13 @@ def calculate_BLEU_score(excepted_sentences, actual_sentences):
 
 
 if __name__ == '__main__':
+    
+#    print(indent_sentence([["what","are","you","eating","?"]]))
+    
     df = read_data()
     # df = clean_english_sentences(df)
     eng_vocab, rev_eng_vocab = get_vocab(df["english_sentences"], addtional_tokens=["<UNK>"], top=15000)
-    heb_vocab, rev_heb_vocab = get_vocab(df["hebrew_sentences"], addtional_tokens=["<UNK>"], top=30000)
+    heb_vocab, rev_heb_vocab = get_vocab(df["hebrew_sentences"], addtional_tokens=["<UNK>","<START>","<EOS>"], top=30000)
     vect_eng_sentences = vectorize_sentences(df["english_sentences"], eng_vocab)
     vect_heb_sentences = vectorize_sentences(df["hebrew_sentences"], heb_vocab)
     pass
