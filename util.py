@@ -1,3 +1,10 @@
+from numpy.random import seed
+
+seed(1)
+from tensorflow import set_random_seed
+
+set_random_seed(2)
+
 import pandas as pd
 from nltk import word_tokenize
 from tqdm import tqdm
@@ -48,7 +55,7 @@ def get_vocab(series, addtional_tokens=[], top=None):
     return vocab, rev_vocab
 
 
-def vectorize_sentences(sentences, vocab):
+def vectorize_sentences(sentences, vocab, add_prefix_token=None, add_suffix_token=None):
     vectorized_sentences = []
     for s in tqdm(sentences):
         sentence = []
@@ -57,22 +64,27 @@ def vectorize_sentences(sentences, vocab):
                 sentence.append(word)
             else:
                 sentence.append("<UNK>")
+        if add_prefix_token is not None:
+            sentence = [add_prefix_token] + sentence
+        if add_suffix_token is not None:
+            sentence = sentence + [add_suffix_token]
         vectorized_sentences.append(sentence)
     return vectorized_sentences
 
-def indent_sentences(sentences,window_size=1):
+
+def indent_sentences(sentences, window_size=1):
     decoder_input = []
     decoder_output = []
-    
+
     for sentence in tqdm(sentences):
         sentence = ["<START>"] + sentence
-        for index in range(window_size,len(sentence)):
-            decoder_input.append(sentence[index-window_size:index])
-            decoder_output.append(sentence[index:index+1])
-        decoder_input.append(sentence[index-window_size+1:index+1])
+        for index in range(window_size, len(sentence)):
+            decoder_input.append(sentence[index - window_size:index])
+            decoder_output.append(sentence[index:index + 1])
+        decoder_input.append(sentence[index - window_size + 1:index + 1])
         decoder_output.append(["<EOS>"])
-    
-    return decoder_input , decoder_output
+
+    return decoder_input, decoder_output
 
 
 def calculate_BLEU_score(excepted_sentences, actual_sentences):
@@ -96,13 +108,12 @@ def calculate_BLEU_score(excepted_sentences, actual_sentences):
 
 
 if __name__ == '__main__':
-    
-   print(indent_sentences([["what","are","you","eating","?"]],2))
-   print(indent_sentences([["what","are","you","eating","?"]],3))
-   # df = read_data()
-   #  # df = clean_english_sentences(df)
-   #  eng_vocab, rev_eng_vocab = get_vocab(df["english_sentences"], addtional_tokens=["<UNK>"], top=15000)
-   #  heb_vocab, rev_heb_vocab = get_vocab(df["hebrew_sentences"], addtional_tokens=["<UNK>","<START>","<EOS>"], top=30000)
-   #  vect_eng_sentences = vectorize_sentences(df["english_sentences"], eng_vocab)
-   #  vect_heb_sentences = vectorize_sentences(df["hebrew_sentences"], heb_vocab)
-   # pass
+    print(indent_sentences([["what", "are", "you", "eating", "?"]], 2))
+    print(indent_sentences([["what", "are", "you", "eating", "?"]], 3))
+    # df = read_data()
+    #  # df = clean_english_sentences(df)
+    #  eng_vocab, rev_eng_vocab = get_vocab(df["english_sentences"], addtional_tokens=["<UNK>"], top=15000)
+    #  heb_vocab, rev_heb_vocab = get_vocab(df["hebrew_sentences"], addtional_tokens=["<UNK>","<START>","<EOS>"], top=30000)
+    #  vect_eng_sentences = vectorize_sentences(df["english_sentences"], eng_vocab)
+    #  vect_heb_sentences = vectorize_sentences(df["hebrew_sentences"], heb_vocab)
+    # pass
