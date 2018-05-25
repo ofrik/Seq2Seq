@@ -14,6 +14,7 @@ from nltk import FreqDist
 import re
 from gensim.models.wrappers import FastText
 from nltk.translate.bleu_score import corpus_bleu
+import numpy as np
 
 tqdm.pandas()
 
@@ -55,20 +56,32 @@ def get_vocab(series, addtional_tokens=[], top=None):
     return vocab, rev_vocab
 
 
-def vectorize_sentences(sentences, vocab, add_prefix_token=None, add_suffix_token=None):
+def vectorize_sentences(sentences, vocab, add_prefix_token=None, add_suffix_token=None, encode=False):
     vectorized_sentences = []
     for s in tqdm(sentences):
         sentence = []
         for word in word_tokenize(decontracted(s)):
             if word in vocab:
-                sentence.append(word)
+                if encode:
+                    sentence.append(vocab[word])
+                else:
+                    sentence.append(word)
             else:
-                sentence.append("<UNK>")
+                if encode:
+                    sentence.append(vocab["<UNK>"])
+                else:
+                    sentence.append("<UNK>")
         if add_prefix_token is not None:
-            sentence = [add_prefix_token] + sentence
+            if encode:
+                sentence = [vocab[add_prefix_token]] + sentence
+            else:
+                sentence = [add_prefix_token] + sentence
         if add_suffix_token is not None:
-            sentence = sentence + [add_suffix_token]
-        vectorized_sentences.append(sentence)
+            if encode:
+                sentence = sentence + [vocab[add_suffix_token]]
+            else:
+                sentence = sentence + [add_suffix_token]
+        vectorized_sentences.append(np.array(sentence))
     return vectorized_sentences
 
 
