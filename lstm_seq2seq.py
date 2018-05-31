@@ -3,6 +3,8 @@ from keras.layers import Input, LSTM, Dense, Embedding
 import numpy as np
 from util import read_data, get_vocab, vectorize_sentences
 from keras import initializers
+from keras.optimizers import SGD
+from keras.callbacks import LearningRateScheduler
 
 batch_size = 64  # Batch size for training.
 epochs = 100  # Number of epochs to train for.
@@ -69,7 +71,7 @@ for i, (input_text, target_text) in enumerate(zip(input_texts, target_texts)):
 encoder_input_data = np.flip(encoder_input_data, 1)
 
 encoder_inputs = Input(shape=(None,), name="enc_input")
-enc_emb = Embedding(num_encoder_tokens, emb_dim, kernel_initializer=initializers.uniform(-0.08, 0.08))(encoder_inputs)
+enc_emb = Embedding(num_encoder_tokens, emb_dim)(encoder_inputs)
 encoder = LSTM(latent_dim, return_sequences=True, kernel_initializer=initializers.uniform(-0.08, 0.08))
 encoder_outputs = encoder(enc_emb)
 encoder = LSTM(latent_dim, return_state=True, kernel_initializer=initializers.uniform(-0.08, 0.08))
@@ -78,7 +80,7 @@ encoder_states = [state_h, state_c]
 
 # Set up the decoder, using `encoder_states` as initial state.
 decoder_inputs = Input(shape=(None,))
-dec_emb = Embedding(num_decoder_tokens, emb_dim, kernel_initializer=initializers.uniform(-0.08, 0.08))
+dec_emb = Embedding(num_decoder_tokens, emb_dim)
 final_dex = dec_emb(decoder_inputs)
 decoder_lstm_1 = LSTM(latent_dim, return_sequences=True, kernel_initializer=initializers.uniform(-0.08, 0.08))
 decoder_outputs = decoder_lstm_1(final_dex,
@@ -90,12 +92,29 @@ decoder_outputs, _, _ = decoder_lstm_2(decoder_outputs)
 decoder_dense = Dense(num_decoder_tokens, activation='softmax', kernel_initializer=initializers.uniform(-0.08, 0.08))
 decoder_outputs = decoder_dense(decoder_outputs)
 
+
+def step_decay(epoch):
+    initial_lrate = 0.7
+    lrate = initial_lrate
+    denominator_exp = epoch - 5
+    if epoch >= 5:
+        lrate = lrate / (2 ^ denominator_exp)
+    return lrate
+
+
+lrate = LearningRateScheduler(step_decay)
+
+callbacks_list = [lrate]
+
+optimizer = SGD(clipnorm=5.0)
+
 model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
-model.compile(optimizer='sgd', loss='categorical_crossentropy')
+model.compile(optimizer=optimizer, loss='categorical_crossentropy')
 model.summary()
 model.fit([encoder_input_data, decoder_input_data], decoder_target_data,
-          batch_size=128,
+          batch_size=batch_size,
           epochs=epochs,
+          callbacks=callbacks_list,
           validation_split=0.2)
 
 encoder_model = Model(encoder_inputs, encoder_states)
