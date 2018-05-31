@@ -64,6 +64,9 @@ for i, (input_text, target_text) in enumerate(zip(input_texts, target_texts)):
         if t > 0:
             decoder_target_data[i, t - 1, target_token_index[word]] = 1.
 
+# reverse the input
+encoder_input_data = np.flip(encoder_input_data, 1)
+
 encoder_inputs = Input(shape=(None,), name="enc_input")
 enc_emb = Embedding(num_encoder_tokens, emb_dim)(encoder_inputs)
 encoder = LSTM(latent_dim, return_sequences=True)
