@@ -2,6 +2,7 @@ from keras.models import Model
 from keras.layers import Input, LSTM, Dense, Embedding
 import numpy as np
 from util import read_data, get_vocab, vectorize_sentences
+from keras import initializers
 
 batch_size = 64  # Batch size for training.
 epochs = 100  # Number of epochs to train for.
@@ -68,24 +69,25 @@ for i, (input_text, target_text) in enumerate(zip(input_texts, target_texts)):
 encoder_input_data = np.flip(encoder_input_data, 1)
 
 encoder_inputs = Input(shape=(None,), name="enc_input")
-enc_emb = Embedding(num_encoder_tokens, emb_dim)(encoder_inputs)
-encoder = LSTM(latent_dim, return_sequences=True)
+enc_emb = Embedding(num_encoder_tokens, emb_dim, kernel_initializer=initializers.uniform(-0.08, 0.08))(encoder_inputs)
+encoder = LSTM(latent_dim, return_sequences=True, kernel_initializer=initializers.uniform(-0.08, 0.08))
 encoder_outputs = encoder(enc_emb)
-encoder = LSTM(latent_dim, return_state=True)
+encoder = LSTM(latent_dim, return_state=True, kernel_initializer=initializers.uniform(-0.08, 0.08))
 encoder_outputs, state_h, state_c = encoder(encoder_outputs)
 encoder_states = [state_h, state_c]
 
 # Set up the decoder, using `encoder_states` as initial state.
 decoder_inputs = Input(shape=(None,))
-dec_emb = Embedding(num_decoder_tokens, emb_dim)
+dec_emb = Embedding(num_decoder_tokens, emb_dim, kernel_initializer=initializers.uniform(-0.08, 0.08))
 final_dex = dec_emb(decoder_inputs)
-decoder_lstm_1 = LSTM(latent_dim, return_sequences=True)
+decoder_lstm_1 = LSTM(latent_dim, return_sequences=True, kernel_initializer=initializers.uniform(-0.08, 0.08))
 decoder_outputs = decoder_lstm_1(final_dex,
                                  initial_state=encoder_states)
-decoder_lstm_2 = LSTM(latent_dim, return_sequences=True, return_state=True)
+decoder_lstm_2 = LSTM(latent_dim, return_sequences=True, return_state=True,
+                      kernel_initializer=initializers.uniform(-0.08, 0.08))
 decoder_outputs, _, _ = decoder_lstm_2(decoder_outputs)
 
-decoder_dense = Dense(num_decoder_tokens, activation='softmax')
+decoder_dense = Dense(num_decoder_tokens, activation='softmax', kernel_initializer=initializers.uniform(-0.08, 0.08))
 decoder_outputs = decoder_dense(decoder_outputs)
 
 model = Model([encoder_inputs, decoder_inputs], decoder_outputs)
