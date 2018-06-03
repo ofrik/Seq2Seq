@@ -7,7 +7,7 @@ from keras.optimizers import SGD
 from keras.callbacks import LearningRateScheduler
 
 batch_size = 64  # Batch size for training.
-epochs = 100  # Number of epochs to train for.
+epochs = 7  # Number of epochs to train for.
 latent_dim = 50  # Latent dimensionality of the encoding space.
 num_samples = 2000  # Number of samples to train on.
 emb_dim = 50
@@ -99,8 +99,8 @@ def step_decay(epoch):
     denominator_exp = epoch - 5
     if epoch >= 5:
         lrate = lrate / (2 ^ denominator_exp)
+    
     return lrate
-
 
 lrate = LearningRateScheduler(step_decay)
 
@@ -136,46 +136,46 @@ decoder_model = Model(
 decoder_model.summary()
 
 
-def decode_sequence(input_seq):
-    # Encode the input as state vectors.
-    states_value = encoder_model.predict(input_seq)
-    # Generate empty target sequence of length 1.
-    target_seq = np.zeros((1, 1))
-    # Populate the first character of target sequence with the start character.
-    target_seq[0, 0] = target_token_index[SENTENCE_START_TOKEN]
-
-    # Sampling loop for a batch of sequences
-    # (to simplify, here we assume a batch of size 1).
-    stop_condition = False
-    decoded_sentence = ''
-    while not stop_condition:
-        output_tokens, h, c = decoder_model.predict(
-            [target_seq] + states_value)
-
-        # Sample a token
-        sampled_token_index = np.argmax(output_tokens[0, -1, :])
-        sampled_char = rev_heb_vocab[sampled_token_index]
-        decoded_sentence += ' ' + sampled_char
-
-        # Exit condition: either hit max length
-        # or find stop character.
-        if (sampled_char == SENTENCE_END_TOKEN or
-                    len(decoded_sentence) > 52):
-            stop_condition = True
-
-        # Update the target sequence (of length 1).
-        target_seq = np.zeros((1, 1))
-        target_seq[0, 0] = sampled_token_index
-
-        # Update states
-        states_value = [h, c]
-
-    return decoded_sentence
-
-
-for seq_index in range(len(input_texts)):
-    input_seq = encoder_input_data[seq_index: seq_index + 1]
-    decoded_sentence = decode_sequence(input_seq)
-    print('-')
-    print('Input sentence:', input_texts[seq_index: seq_index + 1])
-    print('Decoded sentence:', decoded_sentence)
+#def decode_sequence(input_seq):
+#    # Encode the input as state vectors.
+#    states_value = encoder_model.predict(input_seq)
+#    # Generate empty target sequence of length 1.
+#    target_seq = np.zeros((1, 1))
+#    # Populate the first character of target sequence with the start character.
+#    target_seq[0, 0] = target_token_index[SENTENCE_START_TOKEN]
+#
+#    # Sampling loop for a batch of sequences
+#    # (to simplify, here we assume a batch of size 1).
+#    stop_condition = False
+#    decoded_sentence = ''
+#    while not stop_condition:
+#        output_tokens, h, c = decoder_model.predict(
+#            [target_seq] + states_value)
+#
+#        # Sample a token
+#        sampled_token_index = np.argmax(output_tokens[0, -1, :])
+#        sampled_char = rev_heb_vocab[sampled_token_index]
+#        decoded_sentence += ' ' + sampled_char
+#
+#        # Exit condition: either hit max length
+#        # or find stop character.
+#        if (sampled_char == SENTENCE_END_TOKEN or
+#                    len(decoded_sentence) > 52):
+#            stop_condition = True
+#
+#        # Update the target sequence (of length 1).
+#        target_seq = np.zeros((1, 1))
+#        target_seq[0, 0] = sampled_token_index
+#
+#        # Update states
+#        states_value = [h, c]
+#
+#    return decoded_sentence
+#
+#
+#for seq_index in range(len(input_texts)):
+#    input_seq = encoder_input_data[seq_index: seq_index + 1]
+#    decoded_sentence = decode_sequence(input_seq)
+#    print('-')
+#    print('Input sentence:', input_texts[seq_index: seq_index + 1])
+#    print('Decoded sentence:', decoded_sentence)

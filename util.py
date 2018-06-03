@@ -9,7 +9,7 @@ import pandas as pd
 from nltk import word_tokenize
 from tqdm import tqdm
 from collections import Counter
-from textblob import TextBlob
+#from textblob import TextBlob
 from nltk import FreqDist
 import re
 from gensim.models.wrappers import FastText
