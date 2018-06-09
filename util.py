@@ -26,6 +26,18 @@ def read_data():
     return df
 
 
+def read_data2():
+    with open("data/europarl-v8.fi-en.en", "r", encoding="utf8") as f:
+        english_sentences = f.readlines()
+    with open("data/europarl-v8.fi-en.fi", "r", encoding="utf8") as f:
+        fin_sentences = f.readlines()
+    df = pd.DataFrame({"english_sentences": english_sentences, "hebrew_sentences": fin_sentences},
+                      columns=["english_sentences", "hebrew_sentences"])
+    df["english_sentences"] = df["english_sentences"].apply(lambda x: x.lower().strip())
+    df["hebrew_sentences"] = df["hebrew_sentences"].apply(lambda x: x.lower().strip())
+    return df
+
+
 def decontracted(phrase):
     # specific
     phrase = re.sub(r"won't", "will not", phrase)
@@ -56,7 +68,7 @@ def get_vocab(series, addtional_tokens=[], top=None):
     return vocab, rev_vocab
 
 
-def vectorize_sentences(sentences, vocab, add_prefix_token=None, add_suffix_token=None, encode=False):
+def vectorize_sentences(sentences, vocab, add_prefix_token=None, add_suffix_token=None, encode=False, reverse=False):
     vectorized_sentences = []
     for s in tqdm(sentences):
         sentence = []
@@ -81,8 +93,11 @@ def vectorize_sentences(sentences, vocab, add_prefix_token=None, add_suffix_toke
                 sentence = sentence + [vocab[add_suffix_token]]
             else:
                 sentence = sentence + [add_suffix_token]
-        vectorized_sentences.append(np.array(sentence))
-    return vectorized_sentences
+        if reverse:
+            vectorized_sentences.append(np.array(sentence[::-1]))
+        else:
+            vectorized_sentences.append(np.array(sentence))
+    return np.array(vectorized_sentences)
 
 
 def indent_sentences(sentences, window_size=1):
