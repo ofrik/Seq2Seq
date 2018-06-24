@@ -1,0 +1,129 @@
+english_sentence,predicted_translation,expected_translation,bleu_score
+how far does this go ?,כמה זה לעשות ? ?,כמה רחוק זה מגיע ?,0.07071067811865477
+layla is love for fadil was starting to become an obsession .,כל היה דבר היא היא מכלבים לבן .,האהבה של לילה לפדיל התחילה להיות כפייתית .,0.02777619034011792
+did you know there was a secret passage hidden behind the bookcase ?,האם עדיין פעם דולר על החיות ? שלי,ידעת שיש מעבר סודי מאחורי כוננית הספרים ?,0.02777619034011792
+what convinced fadil to become a muslim ?,מה מביא את מעשנת שאה ?,מה שכנע את פאדיל להתאסלם ?,0.05372849659117709
+a woman is virtue is everything .,ציפור שייך מזה זה . .,סגולת האשה היא חזות הכל .,0.040824829046386304
+"if i can not have fadil , no one else is going to have him either .",אם לא לא אכפת לענות לא . לא לא היה להיות היה לב לא אחד . .,"אם פדיל לא יכול להיות שלי , הוא לא יכול להיות גם של אף אחת אחרת .",0.017200673466668964
+fadil used layla is money to buy a home .,פדיל ניסה למאסר עגולים קרובות לא . .,פאדיל השתמש בכסף של לילה לקנות בית .,0.02777619034011792
+jim smith is party was even further to the right .,"ג'ים , מי לא לא יכול לעשות . .",המפלגה של ג'ים סמית היתה יותר ימנית אפילו .,0.028517539529041507
+we are buddies .,אנו יוצאים . .,אנו חברים טובים .,0.09554427922043669
+tom sued mary .,מרי שמע כולם כולם . .,תום תבע את מרי לדין .,0.048549177170732344
+tom is a policeman .,תום הוא .,תום שוטר .,0.13512001548070346
+tom just could not resist teasing mary about the way she was dressed .,תום לא לא הצליח לתת להתעלם ממרי מרי כדי את מרי . מרי . .,תום פשוט לא יכול היה לעמוד בפני הפיתוי להקניט את מרי על אופן לבושה .,0.03514847831369806
+you still have to fill out this application form .,עליך עדיין רק את את המשפטים חודשים שלך,אתה צריך עדיין למלא את טופס הפניה .,0.03303164318013808
+i usually eat a bowl of oatmeal for breakfast .,בדרך כלל אוכל מדבר לקרוא אנגלית בוקר בלי בוקר .,בדרך כלל אני אוכל קערת שיבולת שועל לארוחת הבוקר .,0.05307712171072445
+i am still not entirely comfortable with this .,אני עדיין לא עובד בבית טוב . זה .,אני עדיין לא מרגיש לגמרי בנוח עם זה .,0.14923729480049117
+tom told mary he wanted her to stay in boston with him .,תום אמר למרי שהוא רצה שמרי מרי למרי .,תום סיפר למרי שהוא רוצה שהיא תשאר בבוסטון .,0.06030725360407769
+i am reading the novel you gave me last week .,אני קורא את הספר שלי שלי כל יום .,אני קורא את הרומן שנתת לי לפני שבוע .,0.12753431387594827
+i will not be able to do that until next week .,לא הייתי כל את כל לפני השבוע הבא .,לא אוכל לעשות את זה עד שבוע הבא .,0.06030725360407769
+you have a nice complexion .,אתה לך מקום מילוט . .,יש לך ארשת פנים נאה .,0.048549177170732344
+have you ever drank alcohol before ?,האם את את ? פעם ?,שתית בעבר אלכוהול אי פעם ?,0.08633400213704504
+tom was killed in a traffic accident last winter .,תום היה בתאונת העולם הראשונה . .,תום נהרג בתאונת דרכים בחורף שחלף .,0.043472087194499145
+tom told mary that he would help her wash the dishes .,תום אמר למרי שהוא רוצה לי לשטוף את הכלים .,תום אמר למרי שהוא יעזור לה לשטוף את הכלים .,0.5253819788848316
+tom spent the entire day cleaning the house .,תום בילה את כל יום לפני ימים .,תום בילה את כל היום בנקיון הבית .,0.3655552228545123
+tom muttered something that i could not hear .,תום העמיד לי שאני רוצה לעזור .,תום הפטיר משהו שלא יכולתי לשמוע .,0.039281465090051315
+tom got home just before it started raining .,"תום הגיע , לפני לאחר 2:30 מהר גשם .",תום הגיע הביתה מיד לפני שהתחיל לרדת גשם .,0.07583235673413397
+i heard a loud noise coming from outside my window .,שמעתי את לרדת מחר שלך לחלון .,שמעתי רעש חזק בא מבעד לחלוני .,0.039281465090051315
+i could have helped you if you had asked me .,"רק יכולה למצוא לי אם לעזוב , ``",הייתי יכול לעזור לך לו ביקשת .,0.0
+i also speak a little french .,אני אוכל בבית ספר צרפתית .,אני מדבר גם קצת צרפתית .,0.09554427922043669
+tom tried to persuade mary to help .,תום ניסה לשכנע את מרי לעזור .,תום ניסה לשכנע את מרי שתעזור .,0.6434588841607617
+tom told me that you are unreliable .,תום אמר לי שלא לא היה .,תום אמר לי שאתה לא אמין .,0.18575057999133598
+tom is sketching a bowl of fruit .,תום הוא את מים .,תום מצייר קערת פירות .,0.06389431042462725
+you offended everybody .,את על זה .,העלבת את כולם .,0.09554427922043669
+you looked embarrassed .,אתה שתישני .,נראית מבויישת .,0.11362193664674995
+i went back downstairs .,שיניתי למטה .,חזרתי למטה .,0.24028114141347542
+i will probably do that .,הייתי נלך עשיתי זאת זה .,ככל הנראה אעשה את זה .,0.08633400213704504
+it is immoral to be rich .,זה היה היה גדול .,לא מוסרי להיות עשיר .,0.05372849659117709
+i wrote an arrangement of this piece for a symphony orchestra .,אני את על 5 לטטואבה עכביש לחולי .,כתבתי עיבוד של הקטע הזה לתזמורת פילהרמונית .,0.02777619034011792
+i am going to perform one of mozart is violin concertos .,אני צריך מאד את חמישה הראשון שלי שלי הבית .,אני הולך לבצע את אחד הקונצרטים לכינור של מוצרט .,0.02777619034011792
+tom suddenly realized he loved mary .,טום נראה שמרי שמרי אוהב את מרי .,תום נוכח לפתע שהוא אוהב את מרי .,0.345720784641941
+tom might not have done what people say he did .,תום לא לא היה מה מה שהוא חושבים . אומר .,תום אולי לא עשה את מה שאנשים אומרים שהוא עשה .,0.02818780157629645
+i am expecting a letter from tom .,אני מנסה להסגיר של .,אני מצפה למכתב מתום .,0.06389431042462725
+i suggest that you ignore tom .,אני מציע להזהיר מתום .,אני מציע שתתעלם מתום .,0.16068568378893033
+why are we doing this again ?,למה את עושים את שוב ?,למה אנו עושים זאת שוב ?,0.10266900960803409
+here is tom .,הנה תום .,הנה תום .,0.5623413251903491
+i will be waiting downstairs .,אני למטה .,אמתין למטה .,0.24028114141347542
+you seem intelligent .,אתה נראית גרוע .,את נראית אינטליגנטית .,0.09554427922043669
+i felt uncomfortable .,חשתי חש בנוח בנוח .,אני לא מרגישה בנוח .,0.11362193664674995
+i was brokenhearted .,אני של . .,הלב שלי נשבר .,0.08034284189446518
+i thought otherwise .,חשבתי . .,חשבתי אחרת .,0.13512001548070346
+i stepped backwards .,אני . .,צעדתי אחורנית .,0.11362193664674995
+i started screaming .,התחלתי לצעוק .,התחלתי לצרוח .,0.13512001548070346
+i denied everything .,שכחתי על .,הכחשתי הכל .,0.11362193664674995
+i continued yelling .,המשכתי לצעוק .,המשכתי לצעוק .,0.5623413251903491
+i remained standing .,נשארתי לי .,נשארתי לעמוד .,0.13512001548070346
+i became frustrated .,חשתי מבולבל .,נהייתי מתוסכלת .,0.11362193664674995
+i can do magic tricks .,אני יודע שאתה את . .,אני יודע לבצע להטי קסמים .,0.09554427922043669
+do not make it dirty !,אל תהיה שזה זה !,אל תלכלך את זה !,0.12574334296829354
+i am enjoying this so much .,אני כל כך כל מזה .,אני כל כך נהנה מזה .,0.25406637407730737
+did someone rob you ?,האם הלך ? ?,מישהו שדד אותך ?,0.08034284189446518
+i am disorientated .,אני במקלחת .,אני מבולבלת .,0.13512001548070346
+you seem unhappy .,אתה נראית באמת .,אתם נראים אומללים .,0.08034284189446518
+what tom said stunned everyone .,מה היה היה היה אותו זה .,מה שתום אמר זעזע את כולם .,0.039281465090051315
+i never distorted anyone is words .,מעולם לא שמעתי עליו אחד . לא .,מעודי לא עוותתי את דבריו של מישהו .,0.03303164318013808
+the constitution is not a suicide pact .,האונייה לא ניזוקה מודרנית של,החוקה איננה ברית התאבדותית .,0.0
+we never laughed .,אף לא פעם אונים .,לעולם אין אנו צוחקים .,0.05372849659117709
+"it is simple , but made with love .","זה , , אבל היא להיות .","זה פשוט , אבל עשוי באהבה .",0.08307018474412793
+mary has had a youtube channel since she was 3 .,למרי היה שלושה קטן הראשונה שנים ההר המלכות .,למרי היה ערוץ יוטיוב מאז שהיא בת שלוש .,0.056122223243057295
+i like costume parties .,אני אוהב מוזיקה ומוזיקה .,אני אוהב נשפי מסכות .,0.12574334296829354
+are trade deficits good or bad ?,האם כלולות ? מדבר ? מדבר ?,גרעון מסחרי זה רע או טוב ?,0.033031643180138064
+the first footage of a giant squid was captured in 2012 off the coast of japan .,האישה של של אנגולה של הוא במלחמה החניונים של ידי . .,הסרט הראשון של דיונון ענק הוסרט בשנת 2012 ליד חוף יפן .,0.020255986027125642
+tom woke up on the wrong side of the bed .,תום הרים עם הספר היום . תום .,תום התעורר בצד הלא נכון של המיטה .,0.03303164318013808
+tom did something very foolish .,תום היה משהו להרגע מאד .,תום עשה משהו מטופש מאד .,0.10266900960803409
+stop talking and kiss me .,תפסיק לדבר על לי .,תפסיק לדבר ותנשק אותי .,0.12574334296829354
+tom is a good salesman .,תום הוא נבון . .,תום איש מכירות טוב .,0.06389431042462725
+is russia part of europe or asia ?,"האם של נולדה , כחול ?",רוסיה חלק מאירופה או מאסיה ?,0.040824829046386304
+do not start your seeds too early .,אל תעשן לישון ! .,אל תזרע מוקדם מדי .,0.06389431042462725
+tom won the tour de france .,תום זכה מאחורי ופתח הדייג .,תום זכה בטור דה פראנס .,0.09554427922043669
+not everything is a matter of opinion .,שום כל כך לא אדם . . .,לא כל דבר הוא עניין של דעה .,0.03655552228545124
+his castle was made of broken glass .,השיער היו היה בנבדל באצבע הדדיים .,הטירה שלו הייתה עשויה זכוכית שבורה .,0.033031643180138064
+are you in love with me ?,האם כועס בך ?,אתה מאוהב בי ?,0.08034284189446518
+tom was just as confused as mary was .,תום היה היה כמו הספר מאד ילדים .,טום היה מבולבל באותה מידה כמו מרי .,0.03655552228545124
+i never go to places like that .,אני לא צריך לישון כאלה .,לעולם איני הולך למקומות כאלה .,0.08633400213704504
+i am well aware of the dangers .,אני טוב לסיכונים . .,אני מודע היטב לסכנות .,0.06389431042462725
+i am well aware of the dangers .,אני טוב להיות . .,אני מודעת היטב לסכנות .,0.06389431042462725
+we never go out at night .,אף לא לא היינו בזה .,אנחנו לעולם לא יוצאים בלילה .,0.048549177170732344
+we never go out at night .,אף לא פעם לא היה בזה .,אנחנו אף פעם לא יוצאים בלילה .,0.08307018474412793
+we can not let them do this to us .,אנו לא יכולים לתת לזה זה לזה זאת זה .,אנחנו לא יכולים להרשות שהם יעשו לנו את זה .,0.06311969078225892
+i am inside a store .,אני במקלחת עוצמה .,אני בתוך חנות .,0.09554427922043669
+have you been served ?,האם לך ?,הגישו לכם ?,0.11362193664674995
+"friends , let is make a circle .","הרבה , אהובתי נזדרז '' .","חברים , בואו נעשה מעגל .",0.048549177170732344
+at what time can i speak with you ?,מה מה שאתה עם ?,מתי אפשר לדבר אתך ?,0.05372849659117709
+it is a great honor to meet you .,זה נחמד מצדך רוצה לעזור אותך .,כבוד גדול הוא לי להכיר אותך .,0.06985342056580097
+do you want this defeatist propaganda to bring about further deterioration of the situation ?,"את אתה מעדיף לשלוח הזאת , אני יכול להיות שם את את ?","האם באמצעות התעמולה התבוסתנית הזאת , אתה רוצה שהמצב יתדרדר עוד יותר ?",0.039073802494525016
+tomorrow it will be too late .,מחר זה יהיה גדול מדי .,מחר זה יהיה מאוחר מדיי .,0.21711852081087685
+tom was so distracted that he left his camera on the bus .,תום היה שהוא זהיר על היה את החתול של והניח .,תום היה כה מפוזר שהוא השאיר את המצלמה שלו באוטובוס .,0.05012578715739066
+what do your parents do for a living ?,מה אתה של הם ? ?,מה ההורים שלך עושים לפרנסתם ?,0.048549177170732344
+daddy is knitting a sweater .,אבא שלה את .,אבא סורג סוודר,0.0814136751754278
+can you describe his face ?,את יכול לשאול לי המלח שלך ?,אתה יכול לתאר את הפנים שלו ?,0.043472087194499145
+i hope you can forgive us .,אני מקווה שאני יכולים לעזור לנו .,אני מקווה שאתם יכולים לסלוח לנו .,0.10445522730720382
+i think some lessons have definitely been learned .,אני חושב שיש לנהוג יותר חברים .,אני חושב שכמה לקחים לבטח הוסקו .,0.07730551756939454
+can you add my name to the list ?,אתה יכול להשתמש את שמך במילה ?,אתה יכול להוסיף את שמי לרשימה ?,0.08307018474412793
+does anyone really care ?,האם באמת משהו ?,בכלל אכפת למישהו ?,0.08034284189446518
+we go into the club .,אנו אסירים לפניקה .,אנו נכנסים למועדון .,0.09554427922043669
+i forced them to fix my car .,שכחתי את להוסיף את החדר שלי .,הכרחתי אותם לתקן את המכונית שלי .,0.07730551756939454
+they told me it was my fault .,הם לי שהוא סוג .,אמרו לי שזו אשמתך .,0.06389431042462725
+hello . i am not available at the moment . please leave a message and i will call back . thanks .,"אנא , לא ! , מקולקל , אני לשלם לי כשאגיע . כשאגיע שלהם","שלום , ברגע זה אינני פנוי . נא להשאיר הודעה ואתקשר בחזרה . תודה .",0.015718877363021206
+people are very skeptical these days unless you show them definitive proof .,"אנשים רבים לכל כדי , ללמוד אנשים אני יש פגישה . .",אנשים ספקניים מאוד בימינו אלא אם כן מראים להם הוכחה חותכת .,0.020255986027125642
+i am not beating you into unconsciousness .,אני מתכוון לך . הרגליים .,אינני מרביצה לך עד עילפון .,0.048549177170732344
+it is impossible not to love him .,זה אפשר שלא סביר אותו .,אי אפשר שלא לאהוב אותו .,0.12209471671615688
+it really hurts when you tread on lego ...,זה פשוט לי לנשק פני בקיר,ממש כואב למעוד על לגו .,0.0
+the labor market has become international .,לגברים היו של ביותר .,שוק העבודה הפך בינלאומי .,0.05372849659117709
+she is a very good liar .,היא טובה . . .,היא שקרנית טובה מאד .,0.07071067811865477
+the renaissance is the foundation of modern european culture .,האוכלוסיה של העולם של הנהר של של .,הרנסנס הוא הבסיס של התרבות האירופית המודרנית .,0.03303164318013808
+my bike broke down .,אבא שלי הפליגה .,האופניים שלי התקלקלו .,0.09554427922043669
+i know her sister well .,אני יודעת אותו את עצמי .,אני מכיר היטב את אחותה .,0.05372849659117709
+my daughter partakes in various follies .,הבן שלי מת לסכנה ראש . . .,הבת שלי משתתפת בכל מיני דברי משובה .,0.03303164318013808
+you made a laughingstock of yourself .,היית לך דואר . .,עשית עצמך ללעג ולקלס !,0.0
+should we call an ambulance ?,האם לאמבולנס ?,לקרוא לאמבולנס ?,0.24028114141347542
+"for you , i will do it gladly .","עכשיו את זאת , .",עבורך אעשה זאת ברצון .,0.06389431042462725
+we are not going to take the children to school .,אנחנו לא הולכים את הילדים לבית הספר .,אנו לא נלווה את הילדים לבית הספר .,0.5410822690539396
+each of your words hurts my heart .,כל אחד נוסעות אקראי על הברכיים .,כל אחת ממילותיך פוצעות את לבי .,0.039281465090051315
+i have not been swimming in a long time .,לא לא לא מאוד .,כבר זמן רב שלא שחיתי .,0.040824829046386304
+tom was yelling .,תום היה .,תום צעק .,0.13512001548070346
+i go to a restaurant every other day .,אני הולך את כל כל .,אני מבקר פעם ביומיים במסעדה .,0.048549177170732344
+layla disappeared and left two children behind .,הכובע גדול עם עם בחצר הנהר .,לילה נעלמה לה ונטשה שני ילדים .,0.033031643180138064
+i like beef more than anything .,אני אוהב יותר יותר יותר בוקר בית . .,"אני אוהב , יותר מכל , בשר בקר .",0.06030725360407769
+layla humiliated sami in front of his friends .,הרומן גדול את העיר הוא שנה .,לילה השפילה את סמי בפני חבריו .,0.039281465090051315
+i am very interested in the evolution of the dinosaurs .,אני קראתי סינית של של .,אני מתעניינת מאוד בהתפתחות הדינוזאורים .,0.048549177170732344
