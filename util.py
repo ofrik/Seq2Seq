@@ -8,12 +8,8 @@ set_random_seed(2)
 import pandas as pd
 from nltk import word_tokenize
 from tqdm import tqdm
-from collections import Counter
-#from textblob import TextBlob
 from nltk import FreqDist
 import re
-from gensim.models.wrappers import FastText
-from nltk.translate.bleu_score import corpus_bleu
 import numpy as np
 
 tqdm.pandas()
@@ -113,18 +109,6 @@ def indent_sentences(sentences, window_size=1):
         decoder_output.append(["<EOS>"])
 
     return decoder_input, decoder_output
-
-
-def calculate_BLEU_score(excepted_sentences, actual_sentences):
-    """
-    excepted_sentences = [[['this', 'is', 'a', 'test'], ['this', 'is' 'test']]]
-    actual_sentences = [['this', 'is', 'a', 'test']]
-    that means both expected sentences are good, we have cases where multiple translations are good.
-    :param excepted_sentences:
-    :param actual_sentences:
-    :return:
-    """
-    return corpus_bleu(excepted_sentences, actual_sentences)
 
 
 # def clean_english_sentences(df):
