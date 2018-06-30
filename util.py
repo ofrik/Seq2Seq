@@ -16,25 +16,22 @@ tqdm.pandas()
 
 
 def read_data():
+    """
+    Read the english and hebrew translations into a dataframe
+    :return: Dataframe with the matched sentences
+    """
     df = pd.read_csv("data/eng_heb_sentences.csv", encoding="utf8", names=["hebrew_sentences", "english_sentences"],
                      header=0)
     df["english_sentences"] = df["english_sentences"].apply(lambda x: x.lower())
     return df
 
 
-def read_data2():
-    with open("data/europarl-v8.fi-en.en", "r", encoding="utf8") as f:
-        english_sentences = f.readlines()
-    with open("data/europarl-v8.fi-en.fi", "r", encoding="utf8") as f:
-        fin_sentences = f.readlines()
-    df = pd.DataFrame({"english_sentences": english_sentences, "hebrew_sentences": fin_sentences},
-                      columns=["english_sentences", "hebrew_sentences"])
-    df["english_sentences"] = df["english_sentences"].apply(lambda x: x.lower().strip())
-    df["hebrew_sentences"] = df["hebrew_sentences"].apply(lambda x: x.lower().strip())
-    return df
-
-
 def decontracted(phrase):
+    """
+    Change words abbreviations into their actual word meaning
+    :param phrase: sentence we want to change
+    :return: modified sentence
+    """
     # specific
     phrase = re.sub(r"won't", "will not", phrase)
     phrase = re.sub(r"can\'t", "can not", phrase)
@@ -52,6 +49,13 @@ def decontracted(phrase):
 
 
 def get_vocab(series, addtional_tokens=[], top=None):
+    """
+    extract the vocabulary out of an array, allow to add additional tokens to the vocabulary and choose only the top n frequent words.
+    :param series: array of sentences
+    :param addtional_tokens: additional tokens we want to include in the vocabulary
+    :param top: top n frequent words we want to include in the vocabulary
+    :return: map from a word to its numeric representation and the opposite map
+    """
     rev_vocab = addtional_tokens
     freq_vocab = FreqDist()
     for s in tqdm(series):
@@ -65,6 +69,16 @@ def get_vocab(series, addtional_tokens=[], top=None):
 
 
 def vectorize_sentences(sentences, vocab, add_prefix_token=None, add_suffix_token=None, encode=False, reverse=False):
+    """
+    create a vector out of a sentence
+    :param sentences: array of sentences
+    :param vocab: the vocabulary that will map the words into numeric representation
+    :param add_prefix_token: a token to add as prefix to the sentence vector
+    :param add_suffix_token: a token to add as suffix to the sentence vector
+    :param encode: if to encode the words into numeric representation
+    :param reverse: if to reverse the sentence vector
+    :return: array of vectorized sentences
+    """
     vectorized_sentences = []
     for s in tqdm(sentences):
         sentence = []
@@ -96,32 +110,8 @@ def vectorize_sentences(sentences, vocab, add_prefix_token=None, add_suffix_toke
     return np.array(vectorized_sentences)
 
 
-def indent_sentences(sentences, window_size=1):
-    decoder_input = []
-    decoder_output = []
-
-    for sentence in tqdm(sentences):
-        sentence = ["<START>"] + sentence
-        for index in range(window_size, len(sentence)):
-            decoder_input.append(sentence[index - window_size:index])
-            decoder_output.append(sentence[index:index + 1])
-        decoder_input.append(sentence[index - window_size + 1:index + 1])
-        decoder_output.append(["<EOS>"])
-
-    return decoder_input, decoder_output
-
-
-# def clean_english_sentences(df):
-#     df["remove"] = df["english_sentences"].progress_apply(lambda x: TextBlob(x).detect_language() != "en")
-#     print(df[df["remove"] == True])
-#     filtered = df[df["remove"] == False]
-#     del filtered["remove"]
-#     return filtered
-
-
 if __name__ == '__main__':
-    print(indent_sentences([["what", "are", "you", "eating", "?"]], 2))
-    print(indent_sentences([["what", "are", "you", "eating", "?"]], 3))
+    pass
     # df = read_data()
     #  # df = clean_english_sentences(df)
     #  eng_vocab, rev_eng_vocab = get_vocab(df["english_sentences"], addtional_tokens=["<UNK>"], top=15000)
