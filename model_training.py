@@ -294,10 +294,10 @@ number_of_batches_in_test = int(len(test_vect_eng_sentences)/batch_size)
 
 
 # Calcualte the bleu of the translations of the test data
+test_sentences = []
 for i in range(number_of_batches_in_test):
     fd = next(test_feed_generator)
     predict_ = sess.run(decoder_prediction, fd)
-    test_sentences = []
     for i, (inp, pred,exp) in enumerate(zip(fd[encoder_inputs].T, predict_.T,fd[decoder_targets].T)):
         input_sentence = decode_sequence(inp[::-1],rev_eng_vocab)
         output_sentence = decode_sequence(pred,rev_heb_vocab)
